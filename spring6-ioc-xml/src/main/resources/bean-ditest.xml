@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+<!--    &lt;!&ndash;-->
+<!--    第一种方式：引入外部bean-->
+<!--        第一步：创建两个类的对象，部门和员工-->
+<!--        第二部：在emp的bean标签里使用property引入dept的bean-->
+<!--    &ndash;&gt;-->
+<!--    <bean id="dept" class="com.atguigu.spring6.iocxml.ditest.Dept">-->
+<!--        <property name="dName" value="安保部"></property>-->
+
+<!--    </bean>-->
+
+<!--    <bean id="emp" class="com.atguigu.spring6.iocxml.ditest.Emp">-->
+<!--        &lt;!&ndash;普通属性注入&ndash;&gt;-->
+<!--        <property name="eName" value="lucy"></property>-->
+<!--        <property name="eAge" value="50"></property>-->
+<!--        &lt;!&ndash;对象属性注入&ndash;&gt;-->
+<!--        <property name="dept" ref="dept"></property>-->
+<!--    </bean>-->
+
+<!--    &lt;!&ndash;-->
+<!--    第二种方式：内部bean注入-->
+<!--    &ndash;&gt;-->
+<!--    <bean id="emp2" class="com.atguigu.spring6.iocxml.ditest.Emp">-->
+<!--        &lt;!&ndash;普通属性注入&ndash;&gt;-->
+<!--        <property name="eName" value="mary"></property>-->
+<!--        <property name="eAge" value="20"></property>-->
+
+<!--        &lt;!&ndash;内部bean方式&ndash;&gt;-->
+<!--        <property name="dept">-->
+<!--            <bean id="dept2" class="com.atguigu.spring6.iocxml.ditest.Dept">-->
+<!--                <property name="dName" value="财务部"></property>-->
+<!--            </bean>-->
+<!--        </property>-->
+<!--    </bean>-->
+
+
+    <!--级联赋值-->
+    <bean id="dept3" class="com.atguigu.spring6.iocxml.ditest.Dept">
+        <property name="dName" value="技术部"></property>
+    </bean>
+
+    <bean id="emp3" class="com.atguigu.spring6.iocxml.ditest.Emp">
+        <property name="eName" value="tom"></property>
+        <property name="eAge" value="30"></property>
+
+        <!--外部bean-->
+        <property name="dept" ref="dept3"></property>
+
+        <property name="dept.dName" value="测试部"></property>
+    </bean>
+</beans>
